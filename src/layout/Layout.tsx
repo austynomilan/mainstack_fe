@@ -8,7 +8,7 @@ export default function Layout() {
   const menus = [
     { menu: "Home", icon: icons.homeIcon },
     { menu: "Analytics", icon: icons.analyticsIcon },
-    { menu: "Analytics", icon: icons.analyticsIcon },
+    { menu: "Analytic", icon: icons.analyticsIcon },
     { menu: "CRM", icon: icons.crmIcon },
     { menu: "Apps", icon: icons.appIcon },
   ];

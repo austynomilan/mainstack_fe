@@ -2,11 +2,22 @@ import { icons } from "@/assets/icons";
 import ActionButton from "@/components/ActionButton";
 import DisplayCard from "@/components/DisplayCard";
 import SideModal from "@/components/SideModal";
+import { useApiCall } from "@/services/endPointCaller";
+import { apiEndPoint } from "@/services/endpoints";
 import { Box, Button, Flex, VStack, Text } from "@chakra-ui/react";
 import { useState } from "react";
 
 function Dashboard() {
   const [filter, setFilter] = useState(false);
+  const { queryResult } = useApiCall(
+    `${apiEndPoint.users}`,
+    "get",
+    {},
+    true,
+    60 * 120 * 1000
+  );
+  const { data } = queryResult || {};
+  console.log("----", data)
   return (
     <VStack align="stretch" gap={2}>
       <Box>
