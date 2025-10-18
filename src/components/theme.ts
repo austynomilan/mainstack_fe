@@ -7,6 +7,7 @@ const config = defineConfig({
         primary: {
           100: { value: "#EFF1F6" },
           400: { value: "#56616B" },
+          black: { value: "#131316" },
         },
       },
     },

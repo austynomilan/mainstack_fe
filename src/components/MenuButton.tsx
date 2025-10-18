@@ -1,26 +1,17 @@
-import { Button, Text, HStack } from '@chakra-ui/react'
-import type { ReactNode } from 'react'
+import { Image, Text, Box } from "@chakra-ui/react";
 
 interface MenuButtonProps {
-  icon: ReactNode
-  label: string
+  icon: string;
+  label: string;
 }
 
-export function MenuButton({ icon, label, ...rest }: MenuButtonProps) {
+export function MenuButton({ icon, label }: MenuButtonProps) {
   return (
-    <Button
-      variant="ghost"
-      size="md"
-      px={4}
-      py={2}
-      _hover={{ bg: 'gray.100' }}
-      _active={{ bg: 'gray.200' }}
-      {...rest}
-    >
-      <HStack gap={2}>
-        {icon}
-        <Text>{label}</Text>
-      </HStack>
-    </Button>
-  )
+    <Box display="flex" gap={2} key={label}>
+      <Image src={icon} />
+      <Text color="primary.400" fontSize={16} fontWeight="semibold">
+        {label}
+      </Text>
+    </Box>
+  );
 }

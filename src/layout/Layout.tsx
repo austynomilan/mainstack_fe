@@ -1,6 +1,7 @@
 import { icons } from "@/assets/icons";
+import { MenuButton } from "@/components/MenuButton";
 import Sidebar from "@/components/Sidebard";
-import { Box, Flex, Image, Text } from "@chakra-ui/react";
+import { Box, Flex, Image } from "@chakra-ui/react";
 import { Outlet } from "react-router-dom";
 
 export default function Layout() {
@@ -29,12 +30,7 @@ export default function Layout() {
           <Image src={icons.brnadIcon} />
           <Flex width="581px" justifyContent="space-between">
             {menus.map((menu) => (
-              <Box display="flex" gap={2} key={menu.menu}>
-                <Image src={menu.icon} />
-                <Text color="primary.400" fontSize={16} fontWeight="semibold">
-                  {menu.menu}
-                </Text>
-              </Box>
+              <MenuButton key={menu.menu} icon={menu.icon} label={menu.menu} />
             ))}
           </Flex>
           <Flex width="177px">
@@ -58,7 +54,7 @@ export default function Layout() {
             </Flex>
           </Flex>
         </Box>
-        <Box pl="96px" pt="50px">
+        <Box px="96px" pt="50px">
           <Outlet />
         </Box>
       </Box>

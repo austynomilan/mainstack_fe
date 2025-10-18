@@ -10,6 +10,12 @@ import sidebarring from "./sidebarring.svg";
 import sidebarglass from "./sidebarglass.svg";
 import sidebarFolder from "./sidebarfolder.svg";
 import sidebarFile from "./sidebarfile.svg";
+import InfoIcon from "./infoIcon.svg";
+import downIcon from "./downIcon.svg"
+import importIcon from "./downloadIcon.svg";
+import inflowTransaction from "./inflow.svg";
+import outflowTransaction from "./outflow.svg"
+import cancelIcon from "./cancelIcon.svg"
 
 export const icons = {
   analyticsIcon: analytics,
@@ -24,4 +30,10 @@ export const icons = {
   sidebarGlass: sidebarglass,
   sidebarFolder: sidebarFolder,
   sidebarFile: sidebarFile,
+  InfoIcon: InfoIcon,
+  importIcon:importIcon,
+  downIcon:downIcon,
+  outflowTransaction:outflowTransaction,
+  inflowTransaction:inflowTransaction,
+  cancelIcon:cancelIcon
 };
