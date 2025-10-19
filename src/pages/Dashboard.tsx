@@ -1,12 +1,15 @@
 import { icons } from "@/assets/icons";
 import ActionButton from "@/components/ActionButton";
 import DisplayCard from "@/components/DisplayCard";
+import FilterComponent from "@/components/Filter";
+import { Linechart } from "@/components/LineChart";
 import SideModal from "@/components/SideModal";
 import TransactionCard from "@/components/TransactionCard";
 import { useApiCall } from "@/services/endPointCaller";
 import { apiEndPoint } from "@/services/endpoints";
 import { Box, Button, Flex, VStack, Text } from "@chakra-ui/react";
 import { useState } from "react";
+import Skeleton from "react-loading-skeleton";
 
 function Dashboard() {
   const [filter, setFilter] = useState(false);
@@ -24,13 +27,14 @@ function Dashboard() {
     true,
     60 * 120 * 1000
   );
-  const { data } = queryResult || {};
-  const { data: transactionData } = transactionResults || {};
-  console.log("----t", transactionData);
+  const { data, isLoading } = queryResult || {};
+  const { data: transactionData, isLoading: loadingTransaction } =
+    transactionResults || {};
+
   return (
     <VStack align="stretch" gap={2}>
       <Box>
-        <Flex>
+        <Flex gap={12}>
           <Box flex="5" p={2}>
             <Box display="flex" alignItems="center" gap={16}>
               <DisplayCard
@@ -47,12 +51,32 @@ function Dashboard() {
                 Withdraw
               </Button>
             </Box>
+            <Linechart data={transactionData} />
           </Box>
           <Box flexDirection="column" spaceY={5} flex="2" p={2}>
-            <DisplayCard value={data?.ledger_balance} title="Ledger Balance" />
-            <DisplayCard value={data?.total_payout} title="Total Payout" />
-            <DisplayCard value={data?.total_revenue} title="Total Revenue" />
-            <DisplayCard value={data?.pending_payout} title="Pending Payout" />
+            {isLoading ? (
+              <>
+                {Array.from({ length: 4 }).map((_, i) => (
+                  <Skeleton key={i} height={80} />
+                ))}
+              </>
+            ) : (
+              <>
+                <DisplayCard
+                  value={data?.ledger_balance}
+                  title="Ledger Balance"
+                />
+                <DisplayCard value={data?.total_payout} title="Total Payout" />
+                <DisplayCard
+                  value={data?.total_revenue}
+                  title="Total Revenue"
+                />
+                <DisplayCard
+                  value={data?.pending_payout}
+                  title="Pending Payout"
+                />
+              </>
+            )}
           </Box>
         </Flex>
       </Box>
@@ -81,22 +105,31 @@ function Dashboard() {
           <ActionButton title="Export List" icon={icons.importIcon} />
         </Box>
       </Box>
-      <VStack gap={4}>
-        {transactionData?.map((transactions: any) => (
-          <TransactionCard
-            key={transactions?.payment_reference}
-            buyerName={transactions?.metadata?.name}
-            item={transactions?.metadata?.product_name}
-            amount={transactions?.amount}
-            dateOfPurchase={transactions?.date}
-            transactionType={transactions?.type}
-            status={transactions?.status}
-          />
-        ))}
-      </VStack>
+      {loadingTransaction ? (
+        <Box display="flex" flexDirection="column" gap={3}>
+          {Array.from({ length: 6 }).map((_, i) => (
+            <Skeleton key={i} height={60} />
+          ))}
+        </Box>
+      ) : (
+        <VStack gap={4}>
+          {transactionData?.map((transactions: any, i: number) => (
+            <TransactionCard
+              key={i}
+              buyerName={transactions?.metadata?.name}
+              item={transactions?.metadata?.product_name}
+              amount={transactions?.amount}
+              dateOfPurchase={transactions?.date}
+              transactionType={transactions?.type}
+              status={transactions?.status}
+            />
+          ))}
+        </VStack>
+      )}
+
       {filter && (
         <SideModal onClose={() => setFilter(false)} header="Filter">
-          Filter
+          <FilterComponent close={()=>setFilter(false)} />
         </SideModal>
       )}
     </VStack>

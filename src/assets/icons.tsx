@@ -15,7 +15,8 @@ import downIcon from "./downIcon.svg"
 import importIcon from "./downloadIcon.svg";
 import inflowTransaction from "./inflow.svg";
 import outflowTransaction from "./outflow.svg"
-import cancelIcon from "./cancelIcon.svg"
+import cancelIcon from "./cancelIcon.svg";
+import cashIcon from "./cash.svg"
 
 export const icons = {
   analyticsIcon: analytics,
@@ -35,5 +36,6 @@ export const icons = {
   downIcon:downIcon,
   outflowTransaction:outflowTransaction,
   inflowTransaction:inflowTransaction,
-  cancelIcon:cancelIcon
+  cancelIcon:cancelIcon,
+  cashIcon:cashIcon
 };

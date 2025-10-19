@@ -79,7 +79,7 @@ const SideModal = ({ children, onClose, header }: ModalTypes) => {
           px="22px"
           borderTopRadius="16px"
         >
-          <Text fontSize="sm" fontWeight="semibold" color="primary.500">
+          <Text fontSize="2xl" fontWeight="bold" color="primary.black">
             {header}
           </Text>
 
@@ -95,7 +95,7 @@ const SideModal = ({ children, onClose, header }: ModalTypes) => {
           </Box>
         </Flex>
 
-        <Box p="22px">{children}</Box>
+        <Box px="22px">{children}</Box>
       </Box>
     </Box>
   );
