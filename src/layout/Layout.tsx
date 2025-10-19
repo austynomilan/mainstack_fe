@@ -1,6 +1,8 @@
 import { icons } from "@/assets/icons";
 import { MenuButton } from "@/components/MenuButton";
 import Sidebar from "@/components/Sidebard";
+import { useApiCall } from "@/services/endPointCaller";
+import { apiEndPoint } from "@/services/endpoints";
 import { Box, Flex, Image } from "@chakra-ui/react";
 import { Outlet } from "react-router-dom";
 
@@ -12,7 +14,15 @@ export default function Layout() {
     { menu: "CRM", icon: icons.crmIcon },
     { menu: "Apps", icon: icons.appIcon },
   ];
-
+  const { queryResult } = useApiCall(
+    `${apiEndPoint.users}`,
+    "get",
+    {},
+    true,
+    60 * 120 * 1000
+  );
+  const { data } = queryResult || {};
+  console.log("----", data);
   return (
     <Flex minH="100vh" bg="gray.50">
       <Sidebar />

@@ -17,7 +17,7 @@ function DisplayCard(props: { title: string; value: number; showIcon?:boolean })
         {!props.showIcon && <Image src={icons.InfoIcon} />}
       </Box>
       <Text color="#131316" fontSize="28px" fontWeight="bold">
-        {decimalCurrency(props.value)}
+        {decimalCurrency(Number(props.value))}
       </Text>
     </VStack>
   );

@@ -1,3 +1,5 @@
 export const apiEndPoint = {
-    users:`/user`
-}
+  users: `/user`,
+  wallet: `/wallet`,
+  transaction: `/transactions`,
+};
