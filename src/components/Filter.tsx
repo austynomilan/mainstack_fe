@@ -32,7 +32,7 @@ function FilterComponent(props: { close: () => void }) {
   }) => {
     setComponentVariant(variant);
   };
-  const [filters, setFilters] = useState<{
+  const [, setFilters] = useState<{
     type: string[];
     status: string[];
     startDate: string;

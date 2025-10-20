@@ -4,7 +4,8 @@
     "target": "ES2023",
     "lib": ["ES2023"],
     "module": "ESNext",
-    "types": ["node","jest"],
+    "jsx": "react-jsx",
+    "types": ["node", "jest"],
     "skipLibCheck": true,
 
     /* Bundler mode */
@@ -20,7 +21,11 @@
     "noUnusedParameters": true,
     "erasableSyntaxOnly": true,
     "noFallthroughCasesInSwitch": true,
-    "noUncheckedSideEffectImports": true
+    "noUncheckedSideEffectImports": true,
+    "baseUrl": ".",
+    "paths": {
+      "@/*": ["./src/*"]
+    }
   },
-  "include": ["vite.config.ts","src", "tests"]
+  "include": ["vite.config.ts", "src", "tests"]
 }

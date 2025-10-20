@@ -1,7 +1,7 @@
 {
   "compilerOptions": {
     "tsBuildInfoFile": "./node_modules/.tmp/tsconfig.app.tsbuildinfo",
-    "target": "ESNext",                        // Updated from ES2022 to ESNext (per second snippet)
+    "target": "ESNext",                       
     "useDefineForClassFields": true,
     "lib": ["ES2022", "DOM", "DOM.Iterable"],
     "module": "ESNext",
@@ -25,6 +25,7 @@
     "noUncheckedSideEffectImports": true,
 
     /* Paths alias */
+    "baseUrl": ".",
     "paths": {
       "@/*": ["./src/*"]
     }
